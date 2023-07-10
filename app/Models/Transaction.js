@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 const Config = require('../../Config')
 let Schema = mongoose.Schema;
 var transactionSchema = new Schema({
-  userId: {
-    type: Schema.ObjectId, ref: "Users", trim: true, required: true
+  username: {
+    type: String,
+    required: true
   },
   amount: {
     type: Number,

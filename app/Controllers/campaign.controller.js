@@ -106,19 +106,9 @@ exports.create = async (req,res)=>{
 
 
 exports.charge = async (req, res) => {
-  const { amount, cardToken } = req.body;
+  const { amount, cardToken ,username} = req.body;
 
   try {
-
-
-    // check if user exist 
-  let userExist = await Users.findOne({_id:req.userId},{email:1});
-  if(!userExist){
-    return res.status(400).send({
-      status:400,
-      message:Config.APP_CONSTANTS.MESSAGES.ERROR.USER_NOT_EXIST
-  });
-  }
     const charge = await stripe.charges.create({
       amount:Math.round(amount*100), // Convert from dollars to cents, as integer
       currency: 'usd',
@@ -130,7 +120,7 @@ exports.charge = async (req, res) => {
 
      // Donation data
      var donation = {
-        userId: req.userId,
+        username: username,
         amount: amount, 
         transactionId: transaction
     };

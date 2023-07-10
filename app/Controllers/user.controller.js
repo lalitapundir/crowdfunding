@@ -164,7 +164,7 @@ exports.login = async (req,res)=>{
       });
   }
 
-  const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET, { expiresIn: '16h' });
+  const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET, { expiresIn: process.env.EXPIRE__TIME });
   if (token) {
 
     delete user.password
