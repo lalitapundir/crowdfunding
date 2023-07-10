@@ -19,6 +19,8 @@ var MESSAGES ={
 		INVALID_CRED:"Invalid email or password",
 		NO_TOKEN:"No token provided!",
 		UNAUTHORIZED:"Unauthorized or Token expire!",
+		VERIFY_EMAIL:"Please verify email first!",
+		VERIFY_PHONE:"Please verify Phone number first!"
 
 	}
 }

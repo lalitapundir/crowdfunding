@@ -156,6 +156,13 @@ exports.login = async (req,res)=>{
       message:Config.APP_CONSTANTS.MESSAGES.ERROR.INVALID_CRED
     });
   } 
+  if(user && !user.emailVerified){
+    return res.status(400).send({
+      status:400,
+      message:Config.APP_CONSTANTS.MESSAGES.ERROR.VERIFY_EMAIL
+    });
+  } 
+  
   const isEqual = await bcrypt.compare(payload.password, user.password)
   if (!isEqual) {
       return res.status(400).send({
