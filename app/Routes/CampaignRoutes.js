@@ -48,7 +48,7 @@ const checkFileType = function (file, cb) {
     // useed to accept donation for the campaigns without saving cards
     router.post("/charge",[authJwt.verifyToken],campaigns.validate('charge'),campaigns.charge)
 
-    router.get('/:id',campaigns.findOne)
+    router.get('/:id', campaigns.findOne)
     
-    app.use('/api/campaigns', router);
+    app.use('/api/campaigns',[authJwt.verifyToken], router);
   };
